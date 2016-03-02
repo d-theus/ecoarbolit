@@ -1,0 +1,37 @@
+- content_for :content do
+  .row
+    .col-xs-10.col-xs-offset-2
+      %h1 ПРЕИМУЩЕСТВА НАШЕГО АРБОЛИТА
+  .row
+    %aside.col-xs-4
+      .col-xs-10.col-xs-offset-1
+        %ul.nav.nav-stacked.nav-pills.text-center
+          %li{class: ('active' if current_page?(level_pros_path)) }
+            %a(href=level_pros_path) РОВНЫЙ
+          %li{class: ('active' if current_page?(insulating_pros_path)) }
+            %a(href=insulating_pros_path) ТЁПЛЫЙ
+          %li{class: ('active' if current_page?(solid_pros_path)) }
+            %a(href=solid_pros_path) ПРОЧНЫЙ
+          %li{class: ('active' if current_page?(waterproof_pros_path)) }
+            %a(href=waterproof_pros_path) ВЛАГОСТОЙКИЙ
+          %li{class: ('active' if current_page?(eco_pros_path)) }
+            %a(href=eco_pros_path) ЭКОЛОГИЧЕСКИ ЧИСТЫЙ
+          %li{class: ('active' if current_page?(rot_free_pros_path)) }
+            %a(href=rot_free_pros_path) НЕ ГНИЁТ
+          %li{class: ('active' if current_page?(crack_free_pros_path)) }
+            %a(href=crack_free_pros_path) НЕ ТРЕСКАЕТСЯ
+          %li{class: ('active' if current_page?(shrink_free_pros_path)) }
+            %a(href=shrink_free_pros_path) НЕ ДАЁТ УСАДКИ
+          %li{class: ('active' if current_page?(fastenable_pros_path)) }
+            %a(href=fastenable_pros_path) ДЕРЖИТ ГВОЗДИ
+          %li{class: ('active' if current_page?(simple_pros_path)) }
+            %a(href=simple_pros_path) ПРОСТ В РАБОТЕ
+          %li{class: ('active' if current_page?(cuttable_pros_path)) }
+            %a(href=cuttable_pros_path) ЛЕГКО ПИЛИТСЯ
+
+    %section.col-xs-7
+      %hgroup
+        %h2= yield :pro_name if content_for? :pro_name
+      %article= yield :article if content_for? :article
+
+= render template: 'layouts/application'
