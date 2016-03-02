@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :pros, only: [] do
+  resources :pros, only: [:index] do
     get :level,           on: :collection
     get :insulating,      on: :collection
     get :solid,           on: :collection
