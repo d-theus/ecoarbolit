@@ -33,18 +33,33 @@
     padding-bottom: 1em;
     margin-bottom: 0;
     margin-top: 0;
+    min-height: 300px;
     p {
       margin-left:  10%;
       margin-right: 10%;
     }
-    &:nth-of-type(1),
-    &:nth-of-type(4) {
-      background: @brick-light;
+    @media only screen and (min-width: 0){
+      &:nth-of-type(1),
+      &:nth-of-type(3) {
+        background: @brick-light;
+      }
+      &:nth-of-type(2),
+      &:nth-of-type(4) {
+        background: @brick-normal;
+      }
     }
-    &:nth-of-type(2),
-    &:nth-of-type(3) {
-      background: @brick-normal;
-
+    @media only screen and (min-width: @screen-md){
+      &:nth-of-type(1),
+      &:nth-of-type(4) {
+        background: @brick-light;
+      }
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        background: @brick-normal;
+      }
+    }
+    @media only screen and (min-width: @screen-lg){
+      min-height: 260px;
     }
   }
 
