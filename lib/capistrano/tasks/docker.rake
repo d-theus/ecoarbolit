@@ -3,7 +3,7 @@ namespace :docker do
   task :start => %w(db:start public:start servers:start proxy:start)
   task :restart => %w(stop start)
   task :clear => %w(proxy:clear servers:clear public:clear)
-  task :setup => %w(clear public:setup public:start servers:setup proxy:setup)
+  task :setup => %w(clear public:setup public:start servers:setup proxy:setup servers:stop proxy:stop db:stop)
   task :deploy => %w(setup start)
 
   namespace :servers do
@@ -12,12 +12,16 @@ namespace :docker do
         within current_path do
           execute :docker, "build -t rails ."
           execute :docker, "rm -f #{fetch :rails}-tmp || true"
-          execute :docker, "run --name #{fetch :rails}-tmp -it --link #{fetch :db} #{fetch :volumes} #{fetch :rails} rbenv exec rake assets:precompile"
+          execute :docker, "run --name #{fetch :rails}-tmp -it #{fetch :volumes} #{fetch :rails} rbenv exec rake assets:precompile"
           execute :docker, "commit #{fetch :rails}-tmp #{fetch :rails}"
           execute :docker, "rm #{fetch :rails}-tmp || true"
+          execute :docker, "start #{fetch :db}"
           execute :docker, "run --name #{fetch :rails}-tmp -it --link #{fetch :db} #{fetch :volumes} #{fetch :rails} rbenv exec rake db:migrate"
+          execute :docker, "stop #{fetch :db}"
           execute :docker, "commit #{fetch :rails}-tmp #{fetch :rails}"
           execute :docker, "rm #{fetch :rails}-tmp || true"
+          execute :docker, "start #{fetch :db}"
+          execute :docker, "start #{fetch :smtp}"
           for i in fetch(:http_backends)
             execute :docker, "run --name #{fetch :rails}#{i} -d --link #{fetch :db} --link #{fetch :smtp} #{fetch :volumes} #{fetch :rails} rbenv exec bundle exec #{fetch :backend} start"
           end
