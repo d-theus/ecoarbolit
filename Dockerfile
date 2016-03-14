@@ -12,4 +12,9 @@ RUN rbenv exec bundle install
 
 ADD . $HOME/app/
 WORKDIR $HOME/app/
+
+CMD rbenv exec rake db:migrate
+
+CMD rbenv exec rake assets:precompile
+
 CMD /bin/bash
