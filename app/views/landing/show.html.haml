@@ -1,6 +1,27 @@
 %section#hero
   .row
-    .col-xs-10.col-xs-offset-2
+    .col-xs-5.col-xs-offset-1
+      %ul.hexagon-menu
+        .hexagon-logo
+        %li
+          %div
+            %a(href="#") Продукция
+        %li
+          %div
+            %a(href="#") Статьи
+        %li
+          %div
+            %a(href="#") Прайс
+        %li
+          %div
+            %a(href="#") Доставка
+        %li
+          %div
+            %a(href="#") Контакты
+        %li
+          %div
+            %a(href=pros_path) Преимущества арболита
+    .col-xs-6
       %br/
       %h1.text-nowrap
         %span.text-primary эко
@@ -8,82 +29,38 @@
       %h2
         %a.text-default.text-nowrap.tel{href: 'tel:+79209236009'} 8<span class="text-primary">&nbsp;(920)&nbsp;</span>923-60-09
 
-%section#about
-  .row
-    .col-xs-12
-      %h2
-        Мы изготавливаем арболит с использованием мелкой щепы.
-        %br/
-        Без химических добавок.
-      %p.lead Что это даёт?
+%section#wall
+  %div.tower
+  %div.tower
+    %div.tower-golden-brick
 
-%section#features
-  .row
-    .col-xs-12.col-md-6.feature
-      %h2 РОВНЫЙ
-      %p
-        Правильные чёткие формы, которые требует ГОСТ и минимальные отклонения в размерах. Плохие
-        формы приводят к тому, что при укладке блоков их невозможно положить ровно. Все неровности надо устранять при помощи большого
-        количества раствора. Раствор в большом количестве делает стену холодной, ее надо дополнительно утеплять! Зачем же тогда вообще строить
-        из арболита?
-
-      %a.btn.btn-default.btn-sm(href=level_pros_path) ПОДРОБНЕЕ
-    .col-xs-12.col-md-6.feature
-      %h2 ТЁПЛЫЙ
-      %p
-        Крупная щепа не укладывается так хорошо как мелкая опилка, что приводит к высокой пустотности внутри блока и неоднородности его
-        структуры. А ГОСТ допускает изменение в плотности блока не более 5 %, чего достичь при использовании крупной щепы невозможно. Высокая
-        пустотность делает арболит продуваемым ветром. В результате его надо тщательно закрывать. Блок из мелких опилок однородный, и не продувается.
-
-      %a.btn.btn-default.btn-sm(href=insulating_pros_path) ПОДРОБНЕЕ
-    .col-xs-12.col-md-6.feature
-      %h2 ПРОЧНЫЙ
-      %p
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-        tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-        vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-        no sea takimata sanctus est Lorem ipsum dolor sit amet.
-      %a.btn.btn-default.btn-sm(href=solid_pros_path) ПОДРОБНЕЕ
-    .col-xs-12.col-md-6.feature
-      %h2 ВЛАГОСТОЙКИЙ
-      %p
-        Чем крупнее щепа, тем менее водостойкий арболит. На крупную щепу влияет даже высокая влажность воздуха.
-        Дерево вбирает влагу из воздуха, и расширяется. Чем крупнее щепа, тем больше расширение, сильнее внутренние напряжения и, в
-        результате, рвутся цементные связи. Арболит из опилок устойчив к влаге, поскольку полностью минерализуется цементом.
-
-      %a.btn.btn-default.btn-sm(href=waterproof_pros_path) ПОДРОБНЕЕ
-  .row.feature-primary
-    .col-xs-12
-      %h2 ЭКОЛОГИЧЕСКИ ЧИСТЫЙ
-      %p
-        Производители для обработки древесины от гниения и ускорения созревания арболита используют соли различных кислот.
-        В небольших количествах эти вещества в основном безобидны. Однако на производство одного куба арболита идет 2-3 кг солей.
-        Таким образом в стенах среднего по размеру дома может оказаться 200-300 кг солей. Взаимодействуя с цементом эти соли
-        распадаются и из них высвобождается кислотный остаток, который постепенно будет выходить в атмосферу дома.
-      %p
-        Мы не используем химии для производства, поскольку мелкие опилки связываются с цементом полностью.
-      %a.btn.btn-default.btn-sm(href=eco_pros_path) ПОДРОБНЕЕ
-  .row.feature-other
-    .col-xs-12
-      %h3 Другие преимущества нашего арболита
-      %ul.list-unstyled.list-inline
-        %li
-          %a(href=rot_free_pros_path) НЕ ГНИЁТ
-        %li
-          %a(href=crack_free_pros_path) НЕ ТРЕСКАЕТСЯ
-        %li
-          %a(href=shrink_free_pros_path) НЕ ДАЁТ УСАДКИ
-        %li
-          %a(href=fastenable_pros_path) ДЕРЖИТ ГВОЗДИ
-        %li
-          %a(href=simple_pros_path) ПРОСТ В РАБОТЕ
-        %li
-          %a(href=cuttable_pros_path) ЛЕГКО ПИЛИТСЯ
-
-%section#cta
-  %p.lead
-    Вы заинтересованы или возникли вопросы?<br/>
-    <small>Закажите обратный звонок.</small>
-  %a.btn.btn-primary(href="#")
-    %strong ЗАКАЗАТЬ ОБРАТНЫЙ ЗВОНОК
-
+  .brick.brick-0-0
+    %a(href='#') НЕ ГОРИТ
+  .brick.brick-0-1
+    %a(href=crack_free_pros_path) НЕ ТРЕСКАЕТСЯ
+  .brick.brick-1-1
+    %a(href=rot_free_pros_path) НЕ ГНИЁТ
+  .brick.brick-2-1
+    %a(href=shrink_free_pros_path) НЕ ДАЁТ УСАДКИ
+  .brick.brick-0-2
+    %a(href=cuttable_pros_path) ЛЕГКО ПИЛИТСЯ
+  .brick.brick-1-2
+    %a(href=fastenable_pros_path) ДЕРЖИТ ГВОЗДИ
+  .brick.brick-2-2
+    %a(href=waterproof_pros_path) ВЛАГОСТОЙКИЙ
+  .brick.brick-3-2
+    %a(href=simple_pros_path) ПРОСТ В РАБОТЕ
+  .brick.brick-0-3
+    %a(href=insulating_pros_path) ТЁПЛЫЙ
+  .brick.brick-1-3
+    %a(href=level_pros_path) РОВНЫЙ
+  .brick.brick-2-3
+    %a(href=solid_pros_path) ПРОЧНЫЙ
+  .brick.brick-3-3
+    %a(href=pros_path) Dolor sit
+  .brick.brick-3-4
+    %a(href=pros_path) Dolor sit
+  .brick.brick-2-4
+    %a(href=pros_path) Dolor sit
+  .brick.brick-1-4
+    %a(href=eco_pros_path) ЭКОЛОГИЧНЫЙ
