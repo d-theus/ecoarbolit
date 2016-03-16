@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     get :fastenable,      on: :collection
     get :simple,          on: :collection
     get :cuttable,        on: :collection
+    get :beneficial,      on: :collection
+    get :absorbing,       on: :collection
+    get :fireproof,       on: :collection
   end
   root to: 'landing#show'
 end
