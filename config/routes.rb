@@ -15,5 +15,8 @@ Rails.application.routes.draw do
     get :absorbing,       on: :collection
     get :fireproof,       on: :collection
   end
+  resources :articles, only: [:index] do
+    get 'stroitelstvo-iz-blokov-nesjomnoy-opalubki-i-sverckhprochnogo-arbolita', action: :stroitelstvo_iz_blokov_nesjomnoy_opalubki_i_sverckhprochnogo_arbolita, on: :collection
+  end
   root to: 'landing#show'
 end
