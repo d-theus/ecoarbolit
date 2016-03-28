@@ -1,14 +1,14 @@
 .container-fluid
   .row
-    .col-xs-12
+    .col-xs-10.col-xs-offset-1
       %h1 Доставка
   .row
-    .col-xs-12
+    .col-xs-10.col-xs-offset-1
       %article
         Доставка производится за счёт клиента. Либо транспортом покупателя, либо транспортом третьих лиц, по согласованию с клиентом.
         Время и последовательность отправки согласовывается заранее и обычно включено в договор.
 
   .row
-    .col-xs-12
-      = link_to 'Адрес', '#', class: 'btn btn-flat'
+    .col-xs-10.col-xs-offset-1
+      = link_to 'Адрес', contacts_path, class: 'btn btn-flat'
 

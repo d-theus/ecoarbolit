@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resource :price, only: [:show], controller: :price
   resource :delivery, only: [:show], controller: :delivery
+  resource :contacts, only: [:show], controller: :contacts
   resources :pros, only: [:index] do
     get :level,           on: :collection
     get :insulating,      on: :collection

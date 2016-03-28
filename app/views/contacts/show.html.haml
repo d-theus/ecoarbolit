@@ -1,0 +1,17 @@
+.container-fluid
+  .row
+    .col-xs-10.col-xs-offset-1
+      %h1 Контакты
+  .row
+    .col-xs-10.col-xs-offset-1
+      %article
+        %h2 Адрес
+        %p
+          Владимирская область. Посёлок Красная Горбатка.
+        %h2 Телефон
+        %p
+          8 (920) 923-60-09
+  .row
+    .col-xs-10.col-xs-offset-1
+      = link_to 'О доставке', delivery_path, class: 'btn btn-flat'
+
