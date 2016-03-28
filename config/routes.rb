@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
   resources :articles, only: [:index] do
     get 'stroitelstvo-iz-blokov-nesjomnoy-opalubki-i-sverckhprochnogo-arbolita', action: :stroitelstvo_iz_blokov_nesjomnoy_opalubki_i_sverckhprochnogo_arbolita, on: :collection
+    get 'teploprovodnost', action: :teploprovodnost, on: :collection
   end
   root to: 'landing#show'
 end
