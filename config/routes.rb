@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resource :price, only: [:show], controller: :price
   resources :pros, only: [:index] do
     get :level,           on: :collection
     get :insulating,      on: :collection
