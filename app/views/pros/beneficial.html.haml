@@ -13,7 +13,7 @@
   
   %h4 Сравнительная таблица стоимости строительства из различных материалов
   #beneficial_table_container
-    %table.table.table-bordered.table-striped
+    %table.table.table-bordered.table-striped.table-responsive
       %tr.success
         %th
           МАТЕРИАЛ
@@ -27,14 +27,18 @@
           керамзитобетон
         %th
           шлакобетон
-        %th
-          керамический кирпич
-        %th
-          силикатный кирпич
-        %th
-          керамоблок
-        %th
-          дерево
+        %tr
+          %td
+          %td
+            %img.img-responsive{src: image_path('table/arbolit.jpg')}
+          %td
+            %img.img-responsive{src: image_path('table/penobeton.jpg')}
+          %td
+            %img.img-responsive{src: image_path('table/gazosilikat.jpg')}
+          %td
+            %img.img-responsive{src: image_path('table/keramzitobeton.jpg')}
+          %td
+            %img.img-responsive{src: image_path('table/shlakobeton.jpg')}
         %tr
           %td необходимая толщина стены без утепления
           %td 30 см
@@ -42,17 +46,9 @@
           %td 60 см
           %td 80 см
           %td 80 см
-          %td 80 см
-          %td 80 см
-          %td 50 см
-          %td 30 см
         %tr
           %td минимальная необходимая толщина и высота ленточного фундамента,&nbsp;см 
           %td 40&times;60
-          %td 80&times;60
-          %td 70&times;60
-          %td 90&times;60
-          %td 90&times;60
           %td 90&times;80
           %td 90&times;80
           %td 60&times;60
@@ -64,10 +60,6 @@
           %td 2100 руб
           %td 2340 руб
           %td 2000 руб
-          %td 3430 руб
-          %td 3760 руб
-          %td 2640 руб
-          %td 3040 руб
         %tr
           %td cтоимость работ по возведению 1&nbsp;м<sup>2</sup> стены
           %td 600 руб
@@ -75,10 +67,6 @@
           %td 1500 руб
           %td 2300 руб
           %td 2000 руб
-          %td 3440 руб
-          %td 3760 руб
-          %td 1280 руб
-          %td 3040 руб
         %tr
           %td межрядовое армирование
           %td -
@@ -86,16 +74,142 @@
           %td через ряд
           %td -
           %td -
-          %td -
-          %td -
-          %td каждый ряд
-          %td -
         %tr
           %td необходимость в армопоясах
           %td нет
           %td да
           %td да
           %td нет
+          %td нет
+        %tr
+          %td утепление стыков
+          %td -
+          %td -
+          %td -
+          %td -
+          %td -
+        %tr
+          %td обработка для огнестойкости и от гниения
+          %td -
+          %td -
+          %td -
+          %td -
+          %td -
+        %tr
+          %td расход цемента на 1&nbsp;м<sup>2</sup> стены
+          %td 5 кг
+          %td 10 кг
+          %td 10 кг
+          %td 20 кг
+          %td 25 кг
+        %tr
+          %td затраты времени на возведение 1&nbsp;м<sup>2</sup> стены
+          %td 0,36 чел./час
+          %td 2,7 чел./час
+          %td 2,7 чел./час
+          %td 4,1 чел./час
+          %td 4,1 чел./час
+        %tr
+          %td штукатурные работы за 1&nbsp;м<sup>2</sup> стены
+          %td 400 руб
+          %td 400 руб
+          %td 400 руб
+          %td 400 руб
+          %td 400 руб
+        %tr
+          %td конечная стоимость 1&nbsp;м<sup>2</sup> стены
+          %td 2520 руб
+          %td 3540 руб
+          %td 3740 руб
+          %td 5190 руб
+          %td 4500 руб
+        %tr
+          %td стоимость 1 погонного метра фундамента
+          %td 2100 руб
+          %td 4200 руб
+          %td 3700 руб
+          %td 4725 руб
+          %td 4725 руб
+        %tr
+          %td стоимость коробки 10&times;10&times;3м
+          %td 386400 руб
+          %td 592800 руб
+          %td 596800 руб
+          %td 811800 руб
+          %td 729000 руб
+        %tr
+          %td расход газа на отопление 100м<sup>2</sup> при 22&deg;
+          %td 0,96 к/м
+          %td 2,2 к/м
+          %td 2,5 к/м
+          %td 2,2 к/м
+          %td 1,2 к/м
+
+
+
+    %table.table.table-bordered.table-striped
+      %tr.success
+        %th
+          МАТЕРИАЛ
+        %th
+          арболит
+        %th
+          керамический кирпич
+        %th
+          силикатный кирпич
+        %th
+          керамоблок
+        %th
+          дерево
+        %tr
+          %td
+          %td
+            %img.img-responsive{src: image_path('table/arbolit.jpg')}
+          %td
+            %img.img-responsive{src: image_path('table/keramicheskiy_kirpich.jpg')}
+          %td
+            %img.img-responsive{src: image_path('table/silikatniy_kirpich.jpg')}
+          %td
+            %img.img-responsive{src: image_path('table/keramoblock.jpg')}
+          %td
+            %img.img-responsive{src: image_path('table/derevo.jpg')}
+        %tr
+          %td необходимая толщина стены без утепления
+          %td 30 см
+          %td 80 см
+          %td 80 см
+          %td 50 см
+          %td 30 см
+        %tr
+          %td минимальная необходимая толщина и высота ленточного фундамента,&nbsp;см 
+          %td 40&times;60
+          %td 80&times;60
+          %td 70&times;60
+          %td 90&times;60
+          %td 90&times;60
+        %tr
+          %td стоимость материала на 1&nbsp;м<sup>2</sup> стены
+          %td 1500 руб
+          %td 3430 руб
+          %td 3760 руб
+          %td 2640 руб
+          %td 3040 руб
+        %tr
+          %td cтоимость работ по возведению 1&nbsp;м<sup>2</sup> стены
+          %td 600 руб
+          %td 3440 руб
+          %td 3760 руб
+          %td 1280 руб
+          %td 3040 руб
+        %tr
+          %td межрядовое армирование
+          %td -
+          %td -
+          %td -
+          %td каждый ряд
+          %td -
+        %tr
+          %td необходимость в армопоясах
           %td нет
           %td нет
           %td нет
@@ -107,17 +221,9 @@
           %td -
           %td -
           %td -
-          %td -
-          %td -
-          %td -
-          %td -
           %td да
         %tr
           %td обработка для огнестойкости и от гниения
-          %td -
-          %td -
-          %td -
-          %td -
           %td -
           %td -
           %td -
@@ -126,10 +232,6 @@
         %tr
           %td расход цемента на 1&nbsp;м<sup>2</sup> стены
           %td 5 кг
-          %td 10 кг
-          %td 10 кг
-          %td 20 кг
-          %td 25 кг
           %td 30 кг
           %td 30 кг
           %td 15 кг
@@ -137,20 +239,12 @@
         %tr
           %td затраты времени на возведение 1&nbsp;м<sup>2</sup> стены
           %td 0,36 чел./час
-          %td 2,7 чел./час
-          %td 2,7 чел./час
-          %td 4,1 чел./час
-          %td 4,1 чел./час
           %td 6,16 чел./час
           %td 6,16 чел./час
           %td 3,6 чел./час
           %td 8,2 чел./час
         %tr
           %td штукатурные работы за 1&nbsp;м<sup>2</sup> стены
-          %td 400 руб
-          %td 400 руб
-          %td 400 руб
-          %td 400 руб
           %td 400 руб
           %td -
           %td -
@@ -159,10 +253,6 @@
         %tr
           %td конечная стоимость 1&nbsp;м<sup>2</sup> стены
           %td 2520 руб
-          %td 3540 руб
-          %td 3740 руб
-          %td 5190 руб
-          %td 4500 руб
           %td 7000 руб
           %td 7640 руб
           %td 4580 руб
@@ -170,10 +260,6 @@
         %tr
           %td стоимость 1 погонного метра фундамента
           %td 2100 руб
-          %td 4200 руб
-          %td 3700 руб
-          %td 4725 руб
-          %td 4725 руб
           %td 6140 руб
           %td 6140 руб
           %td 3150 руб
@@ -181,10 +267,6 @@
         %tr
           %td стоимость коробки 10&times;10&times;3м
           %td 386400 руб
-          %td 592800 руб
-          %td 596800 руб
-          %td 811800 руб
-          %td 729000 руб
           %td 1085600 руб
           %td 1162400 руб
           %td 675600 руб
@@ -196,8 +278,4 @@
           %td 1,8 к/м
           %td 2,1 к/м
           %td 2,0 к/м
-          %td 2,2 к/м
-          %td 2,5 к/м
-          %td 2,2 к/м
-          %td 1,2 к/м
 
