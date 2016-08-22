@@ -2,7 +2,8 @@ Capfile
 Dockerfile
 .gitignore
 .dockerignore
-log/
+docker-compose.yml
+log/*
 spec/
-tmp/
-public/
+tmp/*
+public/assets/*

@@ -1,9 +1,8 @@
-FROM dtheus/rails:4.1.7
+FROM dtheus/rails
 
-USER web
 ENV RAILS_ENV production
 ENV BUNDLE_WITHOUT test:development
-ENV PATH $RBENV_DIR/shims:$PATH
+ENV PATH $RBENV_ROOT/shims/:$PATH
 
 WORKDIR /tmp
 ADD Gemfile Gemfile
@@ -11,10 +10,13 @@ ADD Gemfile.lock Gemfile.lock
 RUN rbenv exec bundle install
 
 ADD . $HOME/app/
+USER root
+RUN chown -R web $HOME/app
+USER web
 WORKDIR $HOME/app/
+RUN bundle exec rake assets:clobber; \
+      bundle exec rake tmp:clear; \
+      bundle exec rake assets:precompile; \
+      bundle exec rake sitemap:refresh
 
-CMD rbenv exec rake db:migrate
-
-CMD rbenv exec rake assets:precompile
-
-CMD /bin/bash
+CMD bundle exec rails s --pid=/tmp/rails.pid

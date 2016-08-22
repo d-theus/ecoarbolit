@@ -22,9 +22,14 @@ gem 'uglifier', '>= 1.3.0'
 gem 'active_model_serializers'
 gem 'will_paginate-bootstrap'
 
-gem 'capistrano', group: :development
-gem 'capistrano-rbenv', group: :development
-gem 'capistrano-rails', group: :development
+group :development do
+  gem 'capistrano', group: :development
+  gem 'capistrano-rbenv', group: :development
+  gem 'capistrano-rails', group: :development
+  gem 'chef'
+  gem 'knife-solo'
+  gem 'knife-solo_data_bag'
+end
 
 group :development, :test do
   gem 'rspec-rails'
