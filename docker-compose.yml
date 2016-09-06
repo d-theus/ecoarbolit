@@ -20,7 +20,7 @@ services:
       - '/etc/opendkim/keys/ecoarbolit.com:/etc/opendkim/keys/ecoarbolit.com'
 
   app1: &app
-    build: .
+    image: 'dtheus/ecoarbolit'
     depends_on:
       - db
       - smtp
