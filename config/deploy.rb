@@ -70,7 +70,7 @@ namespace :docker do
     task :sitemap do
       on roles :app do
         within current_path do
-          sleep 2
+          sleep 5
           execute 'docker-compose', 'exec', 'app1', 'bundle exec rake sitemap:refresh'
         end
       end
@@ -79,7 +79,7 @@ namespace :docker do
     task :migrate do
       on roles :app do
         within current_path do
-          sleep 2
+          sleep 5
           execute 'docker-compose', 'exec', 'app1', 'bundle exec rake db:migrate'
         end
       end
