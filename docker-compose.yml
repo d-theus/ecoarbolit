@@ -28,7 +28,6 @@ services:
     env_file: .rbenv-vars
     volumes:
       - 'public:/app/public'
-      - 'uploads:/app/public/uploads'
     environment:
       VIRTUAL_HOST: ecoarbolit.com
       VIRTUAL_PORT: 3000
