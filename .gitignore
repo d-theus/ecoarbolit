@@ -19,6 +19,7 @@ tags
 /public/uploads
 /public/sitemap.xml*
 .rbenv-vars
+.ruby-version
 /config/chef/clients
 /config/chef/documents
 /config/chef/cookbooks
