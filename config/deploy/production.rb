@@ -1,7 +1,1 @@
-require 'active_support/all'
-
-role :app, Dir.chdir(fetch :chef_dir) { `ls nodes` }.lines.grep(/^(\d+\.\d+\.\d+\.\d+)\.json/).map {|f| File.basename(f, File.extname(f)) }
-
-set :ssh_options, {
-  user: 'web'
-}
+server 'ecoarbolit.com', user: 'deploy', roles: %w{app}

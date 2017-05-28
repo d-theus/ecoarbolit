@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.6.0'
 
-set :application, 'ecoarbolit'
+set :application, 'ecoarbolit.com'
 set :repo_url, 'https://github.com/d-theus/ecoarbolit.git'
 
 # Default branch is :master
@@ -35,8 +35,6 @@ set :repo_url, 'https://github.com/d-theus/ecoarbolit.git'
 # set :keep_releases, 5
 
 
-set :chef_dir, File.expand_path('chef', File.dirname(__FILE__))
-
 set :pty, true
 
 set :keep_releases, 5
@@ -67,11 +65,12 @@ namespace :docker do
       end
     end
 
+
     task :sitemap do
       on roles :app do
         within current_path do
-          sleep 5
-          execute 'docker-compose', 'exec', 'app1', 'bundle exec rake sitemap:refresh'
+          sleep 2
+          execute 'docker-compose', 'exec', 'app', 'bundle exec rake sitemap:refresh'
         end
       end
     end
@@ -79,8 +78,8 @@ namespace :docker do
     task :migrate do
       on roles :app do
         within current_path do
-          sleep 5
-          execute 'docker-compose', 'exec', 'app1', 'bundle exec rake db:migrate'
+          sleep 2
+          execute 'docker-compose', 'exec', 'app', 'bundle exec rake db:migrate'
         end
       end
     end
@@ -89,24 +88,12 @@ namespace :docker do
   task :persistence do
     config = YAML.load(File.read File.expand_path('docker-compose.yml'))
     on roles :app do
-      config['volumes'].each do |_, val|
+      $stderr.puts config['volumes'].inspect
+      config['volumes']
+      .select { |_, val| val && val.key?('external') }
+      .each do |_, val|
         name = val['external']['name']
-        execute "docker volume ls | grep #{name} &>/dev/null; if [ $? -ne 0 ]; then docker volume create --name #{name}; fi"
-      end
-    end
-  end
-end
-
-namespace :chef do
-  task :cook do
-    Dir.chdir(fetch :chef_dir) do
-      nodes = JSON.parse(`knife search -z node "role:app" -a ipaddress -a name -F json 2>/dev/null`)["rows"]
-      nodes.each do |node|
-        puts "Another node: #{node.inspect}"
-        node.keys.each do |k|
-          attrs = node[k]
-          system "knife solo cook admin@#{attrs['ipaddress']} -N #{attrs['name']}"
-        end
+        execute "docker volume ls | if grep -q #{name} &>/dev/null; then docker volume create --name #{name}; fi"
       end
     end
   end
@@ -119,7 +106,7 @@ namespace :deploy do
     end
   end
 
-  after :updated,   'docker:compose:down'
+  after :updated,   'docker:compose:down' unless fetch(:skip_compose_down, false)
   after :published, :upload_secret
   after :published, 'docker:persistence'
   after :published, 'docker:compose:up'
