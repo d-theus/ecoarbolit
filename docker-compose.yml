@@ -3,44 +3,44 @@ volumes:
   dbdata:
     external:
       name: 'ecoarbolit-dbdata'
+  public:
 
 services:
   db:
-    image: 'dtheus/postgres'
+    image: 'postgres:9.5'
     env_file: .rbenv-vars
     volumes:
-      - 'dbdata:/var/lib/pgsql'
+      - 'dbdata:/var/lib/postgresql/data'
 
   smtp:
-    image: 'dtheus/postfix-dkim'
+    image: 'dtheus/postfix:jessie'
     ports:
-      - '25:25'
+      - '25'
     env_file: .rbenv-vars
     volumes: 
       - '/etc/opendkim/keys/ecoarbolit.com:/etc/opendkim/keys/ecoarbolit.com'
 
-  app1: &app
-    image: 'dtheus/ecoarbolit'
+  app: &app
+    build: .
     depends_on:
       - db
       - smtp
     env_file: .rbenv-vars
     volumes:
-      - '/home/web/app/public'
-
-  app2:
-    <<: *app
+      - 'public:/app/public'
+      - 'uploads:/app/public/uploads'
+    environment:
+      VIRTUAL_HOST: ecoarbolit.com
+      VIRTUAL_PORT: 3000
 
   proxy:
-    image: 'dtheus/nginx'
+    image: jwilder/nginx-proxy
     ports:
       - '80:80'
-      - '443:443'
     volumes:
-      - './config/nginx.conf:/etc/nginx/nginx.conf'
-    volumes_from:
-      - app1:ro
+      - /var/run/docker.sock:/tmp/docker.sock
+      - /etc/nginx/vhost.d/default:/etc/nginx/vhost.d/default
+      -  public:/var/www/ecoarbolit.com/public
     depends_on:
-      - app1
-      - app2
+      - app
 
