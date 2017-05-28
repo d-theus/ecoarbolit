@@ -20,5 +20,5 @@ test:
   database: ecoarbolit_test
 
 production:
-  adapter: postgresql
+  <<: *default
   host: db
