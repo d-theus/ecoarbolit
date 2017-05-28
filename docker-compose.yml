@@ -5,15 +5,25 @@ volumes:
       name: 'ecoarbolit-dbdata'
   public:
 
+networks:
+  www_default:
+    external:
+      name: www_default
+  ecoarbolit:
+
 services:
   db:
     image: 'postgres:9.5'
     env_file: .rbenv-vars
+    networks:
+      - ecoarbolit
     volumes:
       - 'dbdata:/var/lib/postgresql/data'
 
   smtp:
     image: 'dtheus/postfix:jessie'
+    networks:
+      - ecoarbolit
     ports:
       - '25'
     env_file: .rbenv-vars
@@ -22,6 +32,9 @@ services:
 
   app: &app
     build: .
+    networks:
+      - ecoarbolit
+      - www_default
     depends_on:
       - db
       - smtp
@@ -32,14 +45,16 @@ services:
       VIRTUAL_HOST: ecoarbolit.com
       VIRTUAL_PORT: 3000
 
-  proxy:
-    image: jwilder/nginx-proxy
-    ports:
-      - '80:80'
+  static:
+    image: nginx
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock
-      - /etc/nginx/vhost.d/default:/etc/nginx/vhost.d/default
-      -  public:/var/www/ecoarbolit.com/public
+      -  public:/usr/share/nginx/html
     depends_on:
       - app
+    networks:
+      - ecoarbolit
+      - www_default
+    environment:
+      VIRTUAL_HOST: assets.ecoarbolit.com
+      VIRTUAL_PORT: 80
 

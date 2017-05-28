@@ -93,7 +93,7 @@ namespace :docker do
       .select { |_, val| val && val.key?('external') }
       .each do |_, val|
         name = val['external']['name']
-        execute "docker volume ls | if grep -q #{name} &>/dev/null; then docker volume create --name #{name}; fi"
+        execute "docker volume ls | grep -q #{name} &>/dev/null; if [ $? -eq 1 ]; then docker volume create --name #{name}; fi"
       end
     end
   end
@@ -106,7 +106,7 @@ namespace :deploy do
     end
   end
 
-  after :updated,   'docker:compose:down' unless fetch(:skip_compose_down, false)
+  after :updated,   'docker:compose:down' unless ENV['COMPOSE_SKIP_DOWN']
   after :published, :upload_secret
   after :published, 'docker:persistence'
   after :published, 'docker:compose:up'
