@@ -20,5 +20,5 @@ test:
   database: ecoarbolit_test
 
 production:
-  <<: *default
-  host: db
+  adapter: postgresql
+  url: 'postgresql://web:<%= URI.encode ENV["DB_PASS"] %>@db:5432/ecoarbolit?encoding=utf8&pool=5&timeout=5000'

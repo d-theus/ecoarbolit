@@ -19,4 +19,4 @@ RUN bundle exec rake assets:clobber; \
       bundle exec rake assets:precompile; \
       bundle exec rake sitemap:refresh
 
-CMD bundle exec rails s --pid=/tmp/rails.pid
+CMD rm -rf /tmp/rails.pid; bundle exec rails s --pid=/tmp/rails.pid
