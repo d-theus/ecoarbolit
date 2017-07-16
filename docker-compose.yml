@@ -14,24 +14,16 @@ networks:
 services:
   db:
     image: 'postgres:9.5'
+    restart: always
     env_file: .rbenv-vars
     networks:
       - ecoarbolit
     volumes:
       - 'dbdata:/var/lib/postgresql/data'
 
-  smtp:
-    image: 'dtheus/postfix:jessie'
-    networks:
-      - ecoarbolit
-    ports:
-      - '25'
-    env_file: .rbenv-vars
-    volumes: 
-      - '/etc/opendkim/keys/ecoarbolit.com:/etc/opendkim/keys/ecoarbolit.com'
-
   app: &app
     build: .
+    restart: always
     networks:
       - ecoarbolit
       - www_default
@@ -47,6 +39,7 @@ services:
 
   static:
     image: nginx
+    restart: always
     volumes:
       -  public:/usr/share/nginx/html
     depends_on:
