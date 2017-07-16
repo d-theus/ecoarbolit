@@ -29,13 +29,14 @@ services:
       - www_default
     depends_on:
       - db
-      - smtp
     env_file: .rbenv-vars
     volumes:
       - 'public:/app/public'
     environment:
       VIRTUAL_HOST: ecoarbolit.com
       VIRTUAL_PORT: 3000
+    external_links:
+      - www_smtp_1:smtp
 
   static:
     image: nginx
